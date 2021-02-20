@@ -20,7 +20,9 @@ struct ContentView: View {
             
             Text(factText)
                 .padding()
-
+                .onAppear() {
+                    fetchFact()
+                }
         }
         Button("Get a new fact") {
             fetchFact()
