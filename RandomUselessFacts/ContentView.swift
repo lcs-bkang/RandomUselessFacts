@@ -16,8 +16,14 @@ struct ContentView: View {
     
     // MARK: Computed Properties
     var body: some View {
+        
+        Text("Useless Facts")
+            .font(.largeTitle)
+        
+        Spacer()
+        
         VStack {
-            
+
             Text(factText)
                 .padding()
                 .onAppear() {
@@ -28,6 +34,7 @@ struct ContentView: View {
             fetchFact()
         }
         
+        Spacer()
     }
     
     // MARK: Functions
