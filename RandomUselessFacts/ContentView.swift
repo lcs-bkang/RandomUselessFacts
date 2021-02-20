@@ -16,8 +16,16 @@ struct ContentView: View {
     
     // MARK: Computed Properties
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            
+            Text(factText)
+                .padding()
+
+        }
+        Button("Get a new fact") {
+            fetchFact()
+        }
+        
     }
     
     // MARK: Functions
@@ -74,18 +82,18 @@ struct ContentView: View {
             // DEBUG: See what raw JSON data was returned from the server
             //print(String(data: jokeData, encoding: .utf8)!)
 
-            // Attempt to decode the JSON into an instance of the DadJoke structure
+            // Attempt to decode the JSON into an instance of the UselessFact structure
             if let decodedFactData = try? JSONDecoder().decode(UselessFact.self, from: factData) {
 
                 // DEBUG:
                 print("Joke data decoded from JSON successfully")
-                print("The fact is: \(decodedFactData.joke)")
+                print("The fact is: \(decodedFactData.text)")
 
                 // Now, update the UI on the main thread
                 DispatchQueue.main.async {
 
-                    // Assign the result to the "someText" stored property
-                    factText = decodedFactData.joke
+                    // Assign the result to the "factText" stored property
+                    factText = decodedFactData.text
 
                 }
 
