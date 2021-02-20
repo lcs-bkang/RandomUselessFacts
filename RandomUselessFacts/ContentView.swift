@@ -26,6 +26,7 @@ struct ContentView: View {
 
             Text(factText)
                 .padding()
+                .font(.headline)
                 .onAppear() {
                     fetchFact()
                 }
@@ -95,7 +96,7 @@ struct ContentView: View {
             if let decodedFactData = try? JSONDecoder().decode(UselessFact.self, from: factData) {
 
                 // DEBUG:
-                print("Joke data decoded from JSON successfully")
+                print("Fact data decoded from JSON successfully")
                 print("The fact is: \(decodedFactData.text)")
 
                 // Now, update the UI on the main thread
@@ -108,7 +109,7 @@ struct ContentView: View {
 
             } else {
 
-                print("Could not decode JSON into an instance of the DadJoke structure.")
+                print("Could not decode JSON into an instance of the UselessFact structure.")
 
             }
 
